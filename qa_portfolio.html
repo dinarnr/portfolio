@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Name · QA Engineer Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F7F5F0;
+    --ink: #1A1814;
+    --ink-muted: #6B6860;
+    --accent: #2D6A4F;
+    --accent-light: #E8F5EE;
+    --accent-mid: #52B788;
+    --border: rgba(26,24,20,0.1);
+    --card-bg: #FFFFFF;
+    --tag-bg: #EEF7F2;
+    --tag-text: #1B4D34;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(247,245,240,0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 4rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-text {
+    position: absolute;
+    right: -2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'DM Serif Display', serif;
+    font-size: 22vw;
+    color: rgba(45,106,79,0.04);
+    pointer-events: none;
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  .hero-content {
+    max-width: 760px;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    padding: 0.4rem 1rem;
+    background: var(--accent-light);
+    border-radius: 100px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent-mid);
+  }
+
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-title {
+    font-size: 1.05rem;
+    color: var(--ink-muted);
+    font-weight: 400;
+    margin-bottom: 1.75rem;
+    border-left: 3px solid var(--accent-mid);
+    padding-left: 1rem;
+  }
+
+  .hero-desc {
+    font-size: 1.15rem;
+    color: var(--ink-muted);
+    max-width: 520px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 2rem;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.25s;
+  }
+
+  .btn-primary:hover { background: #235C3F; transform: translateY(-2px); }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 2rem;
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.25s;
+  }
+
+  .btn-secondary:hover {
+    background: var(--card-bg);
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .hero-status {
+    margin-top: 3rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+  }
+
+  .status-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #4ADE80;
+    box-shadow: 0 0 0 3px rgba(74,222,128,0.25);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(74,222,128,0.25); }
+    50% { box-shadow: 0 0 0 7px rgba(74,222,128,0.08); }
+  }
+
+  /* SECTIONS */
+  section { padding: 6rem 4rem; }
+  section:nth-child(even) { background: var(--card-bg); }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+  }
+
+  .section-sub {
+    font-size: 1rem;
+    color: var(--ink-muted);
+    max-width: 540px;
+    line-height: 1.8;
+  }
+
+  .section-header { margin-bottom: 3.5rem; }
+
+  .divider {
+    width: 48px;
+    height: 3px;
+    background: var(--accent-mid);
+    border-radius: 2px;
+    margin: 1.25rem 0 2rem;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-story p {
+    color: var(--ink-muted);
+    line-height: 1.9;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-story strong { color: var(--ink); font-weight: 500; }
+
+  .traits {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .trait {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--accent-light);
+    border-radius: 12px;
+  }
+
+  .trait-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .trait-title { font-weight: 600; font-size: 0.9rem; color: var(--ink); margin-bottom: 0.25rem; }
+  .trait-desc { font-size: 0.85rem; color: var(--ink-muted); line-height: 1.6; }
+
+  .skills-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+
+  .chip {
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.4rem 0.9rem;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    border-radius: 100px;
+    border: 1px solid rgba(45,106,79,0.15);
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .skill-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.75rem;
+    transition: all 0.3s;
+  }
+
+  .skill-card:hover {
+    border-color: var(--accent-mid);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(45,106,79,0.1);
+  }
+
+  .skill-card.accent {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .skill-emoji { font-size: 2rem; margin-bottom: 1rem; display: block; }
+
+  .skill-name { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.5rem; color: var(--ink); }
+  .skill-card.accent .skill-name { color: #fff; }
+
+  .skill-desc { font-size: 0.82rem; color: var(--ink-muted); line-height: 1.6; }
+  .skill-card.accent .skill-desc { color: rgba(255,255,255,0.75); }
+
+  .skill-level { margin-top: 1rem; display: flex; gap: 4px; }
+
+  .level-dot {
+    width: 20px; height: 4px;
+    border-radius: 2px;
+    background: rgba(45,106,79,0.15);
+  }
+
+  .level-dot.filled { background: var(--accent-mid); }
+  .skill-card.accent .level-dot { background: rgba(255,255,255,0.2); }
+  .skill-card.accent .level-dot.filled { background: rgba(255,255,255,0.9); }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+
+  .project-card:hover {
+    border-color: var(--accent-mid);
+    box-shadow: 0 16px 48px rgba(45,106,79,0.08);
+    transform: translateY(-4px);
+  }
+
+  .project-card.featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .project-visual {
+    background: linear-gradient(135deg, var(--accent-light) 0%, #D8F3E3 100%);
+    padding: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    min-height: 200px;
+  }
+
+  .project-body { padding: 1.75rem; }
+
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+
+  .project-tag {
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 0.25rem 0.65rem;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    border-radius: 100px;
+  }
+
+  .project-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.35rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .project-desc {
+    font-size: 0.88rem;
+    color: var(--ink-muted);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+  }
+
+  .project-meta strong { color: var(--ink); font-weight: 500; }
+
+  .project-links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+  .proj-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.45rem 0.9rem;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: var(--ink);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .proj-link:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+  /* ARTIFACTS */
+  .artifacts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .artifact-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+
+  .artifact-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+    border-color: var(--accent-mid);
+  }
+
+  .artifact-preview {
+    background: var(--cream);
+    padding: 1.5rem;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mock-row { height: 8px; border-radius: 4px; background: rgba(45,106,79,0.12); }
+  .mock-row.header { height: 12px; background: rgba(45,106,79,0.3); width: 60%; }
+  .mock-row.short { width: 45%; }
+  .mock-row.mid { width: 70%; }
+  .mock-row.long { width: 90%; }
+  .mock-row.highlight { background: rgba(45,106,79,0.2); width: 55%; }
+
+  .artifact-info { padding: 1.25rem; }
+
+  .artifact-type {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+
+  .artifact-name { font-weight: 500; font-size: 0.9rem; color: var(--ink); margin-bottom: 0.25rem; }
+  .artifact-desc { font-size: 0.8rem; color: var(--ink-muted); line-height: 1.55; }
+
+  /* CONTACT */
+  .contact-section {
+    background: var(--ink);
+    color: #fff;
+    padding: 7rem 4rem;
+    text-align: center;
+  }
+
+  .contact-section .section-label { color: var(--accent-mid); }
+  .contact-section .section-title { color: #fff; }
+  .contact-section .section-sub { color: rgba(255,255,255,0.55); margin: 0 auto 2.5rem; }
+
+  .contact-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 1.75rem;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 100px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: all 0.25s;
+  }
+
+  .contact-link:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-2px); }
+  .contact-link.primary { background: var(--accent); border-color: var(--accent); }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    padding: 1.5rem 4rem;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  footer p { font-size: 0.8rem; color: rgba(255,255,255,0.28); }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.25rem; }
+    section, .hero { padding: 5rem 1.5rem 3rem; }
+    .hero { min-height: auto; padding-top: 7rem; }
+    .about-grid, .projects-grid, .skills-grid, .artifacts-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-column: 1; display: block; }
+    .project-visual { min-height: 140px; font-size: 3.5rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .contact-section { padding: 4rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <a href="#home" class="nav-logo">Your Name.</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#artifacts">Artifacts</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="hero-bg-text">QA</div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Available for work</div>
+    <h1 class="hero-name">
+      Your<br><em>Name Here</em>
+    </h1>
+    <p class="hero-title">Quality Assurance Engineer · Manual Testing</p>
+    <p class="hero-desc">
+      I make sure software actually works the way it should. Meticulous, detail-obsessed, and genuinely passionate about quality — I find the bugs before your users do.
+    </p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-primary">View My Work →</a>
+      <a href="#contact" class="btn-secondary">Let's Connect</a>
+    </div>
+    <div class="hero-status">
+      <span class="status-dot"></span>
+      Open to entry-level QA opportunities
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="section-header">
+    <div class="section-label">About Me</div>
+    <h2 class="section-title">From [Previous Field]<br>to Quality Assurance</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-story">
+      <p>
+        My journey into QA started from a simple realization: <strong>I naturally notice when things don't work the way they should.</strong> After [X years] in [previous field], I made a deliberate career switch into software quality — and it feels like where I was always meant to be.
+      </p>
+      <p>
+        I specialize in <strong>manual testing</strong> — writing test cases, exploring edge cases, and documenting bugs with the kind of precision that actually helps developers fix them fast.
+      </p>
+      <p>
+        I'm currently building my portfolio through hands-on projects that simulate real-world QA work: from writing detailed test plans for login flows, to running exploratory sessions on e-commerce checkouts, to basic API testing with Postman.
+      </p>
+      <p>
+        I believe quality isn't just about finding bugs — it's about <strong>understanding the user experience</strong> and making sure every release builds trust.
+      </p>
+      <div class="skills-chips">
+        <span class="chip">Manual Testing</span>
+        <span class="chip">Test Case Writing</span>
+        <span class="chip">Bug Reporting</span>
+        <span class="chip">API Testing</span>
+        <span class="chip">Postman</span>
+        <span class="chip">Jira</span>
+        <span class="chip">Google Sheets</span>
+        <span class="chip">Agile / Scrum</span>
+        <span class="chip">Exploratory Testing</span>
+        <span class="chip">Test Planning</span>
+      </div>
+    </div>
+    <div>
+      <div class="traits">
+        <div class="trait">
+          <span class="trait-icon">🔍</span>
+          <div>
+            <div class="trait-title">Detail-Oriented</div>
+            <div class="trait-desc">I don't skim — I dig. I test edge cases that most people overlook, from empty fields to unexpected user behavior.</div>
+          </div>
+        </div>
+        <div class="trait">
+          <span class="trait-icon">🧠</span>
+          <div>
+            <div class="trait-title">Analytical Thinker</div>
+            <div class="trait-desc">I break down requirements, identify gaps, and think through "what could go wrong" before a single line of code ships.</div>
+          </div>
+        </div>
+        <div class="trait">
+          <span class="trait-icon">📋</span>
+          <div>
+            <div class="trait-title">Clear Communicator</div>
+            <div class="trait-desc">My bug reports are reproducible, well-documented, and easy to understand — even for non-technical stakeholders.</div>
+          </div>
+        </div>
+        <div class="trait">
+          <span class="trait-icon">🔄</span>
+          <div>
+            <div class="trait-title">Fast Learner</div>
+            <div class="trait-desc">As a career switcher, I've proven I can pick up new domains quickly — and I bring fresh perspective to every test cycle.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section id="skills" style="background: var(--card-bg);">
+  <div class="section-header">
+    <div class="section-label">Skills</div>
+    <h2 class="section-title">What I Bring<br>to the Table</h2>
+    <div class="divider"></div>
+    <p class="section-sub">Focused on manual testing fundamentals, with growing exposure to API and basic automation tools.</p>
+  </div>
+  <div class="skills-grid">
+
+    <div class="skill-card accent">
+      <span class="skill-emoji">🧪</span>
+      <div class="skill-name">Manual Testing</div>
+      <div class="skill-desc">Functional, regression, exploratory, and smoke testing. My core strength and primary focus.</div>
+      <div class="skill-level">
+        <div class="level-dot filled"></div>
+        <div class="level-dot filled"></div>
+        <div class="level-dot filled"></div>
+        <div class="level-dot filled"></div>
+        <div class="level-dot"></div>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <span class="skill-emoji">📝</span>
+      <div class="skill-name">Test Case Design</div>
+      <div class="skill-desc">Writing clear, structured, and reusable test cases covering positive, negative, and edge cases.</div>
+      <div class="skill-level">
+        <div class="level-dot filled"></div>
+        <div class="level-dot filled"></div>
+        <div class="level-dot filled"></div>
+        <div class="level-dot filled"></div>
+        <div class="level-dot"></div>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <span class="skill-emoji">🐛</span>
+      <div class="skill-name">Bug Reporting</div>
+      <div class="skill-desc">Detailed bug reports with steps to reproduce, severity, priority, environment, and screenshots.</div>
+      <div class="skill-level">
+        <div class="level-dot filled"></div>
+        <div class="level-dot filled"></div>
+        <div class="level-dot filled"></div>
+        <div class="level-dot filled"></div>
+        <div class="level-dot"></div>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <span class="skill-emoji">🔌</span>
+      <div class="skill-name">API Testing</div>
+      <div class="skill-desc">Testing REST APIs with Postman — validating requests, responses, status codes, and payloads.</div>
+      <div class="skill-level">
+        <div class="level-dot filled"></div>
+        <div class="level-dot filled"></div>
+        <div class="level-dot filled"></div>
+        <div class="level-dot"></div>
+        <div class="level-dot"></div>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <span class="skill-emoji">🗂️</span>
+      <div class="skill-name">Test Management</div>
+      <div class="skill-desc">Organizing test suites, tracking execution in Jira and Google Sheets, and writing test plans.</div>
+      <div class="skill-level">
+        <div class="level-dot filled"></div>
+        <div class="level-dot filled"></div>
+        <div class="level-dot filled"></div>
+        <div class="level-dot"></div>
+        <div class="level-dot"></div>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <span class="skill-emoji">⚙️</span>
+      <div class="skill-name">Basic Automation</div>
+      <div class="skill-desc">Currently learning Selenium and basic scripting — automation as a complement to manual work.</div>
+      <div class="skill-level">
+        <div class="level-dot filled"></div>
+        <div class="level-dot filled"></div>
+        <div class="level-dot"></div>
+        <div class="level-dot"></div>
+        <div class="level-dot"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section id="projects" style="background: var(--cream);">
+  <div class="section-header">
+    <div class="section-label">Projects</div>
+    <h2 class="section-title">Work That<br>Shows What I Do</h2>
+    <div class="divider"></div>
+    <p class="section-sub">Real manual testing projects with full documentation — test plans, test cases, and bug reports included.</p>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- FEATURED -->
+    <div class="project-card featured">
+      <div class="project-visual">🔐</div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag">Manual Testing</span>
+          <span class="project-tag">Functional Testing</span>
+          <span class="project-tag">Regression</span>
+          <span class="project-tag">Security</span>
+          <span class="project-tag">Featured</span>
+        </div>
+        <h3 class="project-name">Login Flow — End-to-End Testing</h3>
+        <p class="project-desc">
+          Comprehensive manual testing of a web application login system — covering valid/invalid credentials, password visibility toggle, "Remember Me" function, account lockout after failed attempts, session handling, and password reset flow. Found 8 bugs including 2 critical security-related issues.
+        </p>
+        <div class="project-meta">
+          <span>🛠️ <strong>Tools:</strong> Google Sheets, Jira, Chrome DevTools, Loom (for bug videos)</span>
+          <span>📊 <strong>42 test cases written</strong> | 8 bugs found (2 Critical, 3 Major, 3 Minor)</span>
+          <span>⏱️ <strong>Duration:</strong> 3 days | Tested on Chrome, Firefox, Mobile Safari</span>
+        </div>
+        <div class="project-links">
+          <a href="YOUR_GOOGLE_SHEET_LINK" class="proj-link" target="_blank">📋 Test Cases</a>
+          <a href="YOUR_BUG_REPORT_LINK" class="proj-link" target="_blank">🐛 Bug Report</a>
+          <a href="YOUR_TEST_PLAN_LINK" class="proj-link" target="_blank">📄 Test Plan</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="project-card">
+      <div class="project-visual" style="font-size: 3.5rem; min-height: 150px;">🛒</div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag">E-commerce</span>
+          <span class="project-tag">End-to-End</span>
+          <span class="project-tag">UI Testing</span>
+        </div>
+        <h3 class="project-name">E-commerce Checkout Testing</h3>
+        <p class="project-desc">
+          End-to-end manual testing of a checkout flow — from cart to order confirmation. Tested payment form validation, promo codes, address auto-fill, order summary accuracy, and error messages.
+        </p>
+        <div class="project-meta">
+          <span>🛠️ <strong>Tools:</strong> Google Sheets, Jira, Chrome DevTools</span>
+          <span>📊 <strong>28 test cases</strong> | 5 bugs found</span>
+        </div>
+        <div class="project-links">
+          <a href="YOUR_LINK_HERE" class="proj-link" target="_blank">📋 Test Cases</a>
+          <a href="YOUR_LINK_HERE" class="proj-link" target="_blank">🐛 Bug Report</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="project-card">
+      <div class="project-visual" style="font-size: 3.5rem; min-height: 150px;">🔌</div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag">API Testing</span>
+          <span class="project-tag">Postman</span>
+          <span class="project-tag">REST API</span>
+        </div>
+        <h3 class="project-name">REST API Testing — User Module</h3>
+        <p class="project-desc">
+          Manual API testing using Postman on a public REST API — tested CRUD operations, HTTP status codes, response schema validation, and edge cases like empty payloads and unauthorized access.
+        </p>
+        <div class="project-meta">
+          <span>🛠️ <strong>Tools:</strong> Postman, Google Sheets</span>
+          <span>📊 <strong>20 endpoints tested</strong> | 4 bugs found</span>
+        </div>
+        <div class="project-links">
+          <a href="YOUR_LINK_HERE" class="proj-link" target="_blank">📋 Test Cases</a>
+          <a href="YOUR_LINK_HERE" class="proj-link" target="_blank">📮 Postman Collection</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ ARTIFACTS ============ -->
+<section id="artifacts" style="background: var(--card-bg);">
+  <div class="section-header">
+    <div class="section-label">Test Artifacts</div>
+    <h2 class="section-title">Samples of<br>My Documentation</h2>
+    <div class="divider"></div>
+    <p class="section-sub">Clean, structured, and actionable — the kind of documentation developers and PMs actually appreciate.</p>
+  </div>
+
+  <div class="artifacts-grid">
+
+    <div class="artifact-card">
+      <div class="artifact-preview">
+        <div class="mock-row header"></div>
+        <div class="mock-row long"></div>
+        <div class="mock-row mid"></div>
+        <div class="mock-row short"></div>
+        <div class="mock-row highlight"></div>
+        <div class="mock-row long"></div>
+        <div class="mock-row mid"></div>
+        <div class="mock-row short"></div>
+      </div>
+      <div class="artifact-info">
+        <div class="artifact-type">Test Case</div>
+        <div class="artifact-name">Login — Negative Test Cases</div>
+        <div class="artifact-desc">42 test cases with TC-ID, description, preconditions, steps, expected result, and pass/fail status.</div>
+      </div>
+    </div>
+
+    <div class="artifact-card">
+      <div class="artifact-preview">
+        <div class="mock-row header" style="background: rgba(200,60,60,0.35); width: 70%;"></div>
+        <div class="mock-row long" style="background: rgba(200,60,60,0.12);"></div>
+        <div class="mock-row mid" style="background: rgba(200,60,60,0.12);"></div>
+        <div class="mock-row short" style="background: rgba(200,60,60,0.22);"></div>
+        <div class="mock-row long" style="background: rgba(200,60,60,0.12);"></div>
+        <div class="mock-row highlight" style="background: rgba(200,60,60,0.15);"></div>
+        <div class="mock-row mid"></div>
+      </div>
+      <div class="artifact-info">
+        <div class="artifact-type">Bug Report</div>
+        <div class="artifact-name">Critical: Session Not Expiring</div>
+        <div class="artifact-desc">Detailed bug report with severity, priority, environment, steps to reproduce, expected vs actual, and screenshot evidence.</div>
+      </div>
+    </div>
+
+    <div class="artifact-card">
+      <div class="artifact-preview">
+        <div class="mock-row header" style="width: 80%;"></div>
+        <div class="mock-row short"></div>
+        <div class="mock-row long"></div>
+        <div class="mock-row mid"></div>
+        <div class="mock-row long"></div>
+        <div class="mock-row short"></div>
+        <div class="mock-row highlight" style="width: 75%;"></div>
+        <div class="mock-row mid"></div>
+      </div>
+      <div class="artifact-info">
+        <div class="artifact-type">Test Plan</div>
+        <div class="artifact-name">E-commerce Checkout Test Plan</div>
+        <div class="artifact-desc">Full test plan covering scope, approach, test types, test environment, schedule, and entry/exit criteria.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<div class="contact-section" id="contact">
+  <div class="section-label">Contact</div>
+  <h2 class="section-title" style="font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 4vw, 2.75rem);">Let's Work Together</h2>
+  <div class="divider" style="background: var(--accent-mid); margin: 1.25rem auto 1.5rem;"></div>
+  <p class="section-sub" style="max-width: 480px; margin: 0 auto 2.5rem;">
+    I'm actively looking for entry-level QA opportunities. Whether it's a full-time role, internship, or freelance project — I'd love to hear from you.
+  </p>
+  <div class="contact-links">
+    <a href="mailto:your@email.com" class="contact-link primary">✉️ your@email.com</a>
+    <a href="https://linkedin.com/in/yourname" class="contact-link" target="_blank">in LinkedIn</a>
+    <a href="https://github.com/yourname" class="contact-link" target="_blank">⌥ GitHub</a>
+  </div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <p>© 2025 Your Name · QA Engineer Portfolio</p>
+  <p>Built with intention. Tested with care.</p>
+</footer>
+
+</body>
+</html>
