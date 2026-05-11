@@ -103,11 +103,21 @@
       top: 50%;
       transform: translateY(-50%);
       font-family: 'DM Serif Display', serif;
-      font-size: 22vw;
+      font-size: 13vw;
+      line-height: 0.9;
+      text-align: right;
       color: rgba(45, 106, 79, 0.04);
       pointer-events: none;
-      white-space: nowrap;
       user-select: none;
+    }
+
+    .hero-bg-text span {
+      display: block;
+      white-space: nowrap;
+    }
+
+    .hero-bg-text .bg-accent {
+      font-style: italic;
     }
 
     .hero-content {
@@ -344,6 +354,57 @@
       line-height: 1.6;
     }
 
+    .about-cv-heading {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin: 0 0 0.35rem;
+    }
+
+    .about-cv .traits {
+      margin-bottom: 0;
+    }
+
+    .about-cv > .traits + .about-cv-heading {
+      margin-top: 1.75rem;
+    }
+
+    .about-cv {
+      margin-bottom: 2.5rem;
+    }
+
+    .about-cv-doc {
+      margin-top: 1.25rem;
+    }
+
+    .about-cv-doc-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .about-cv-download {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 0.4rem 0.95rem;
+      border: 1px solid rgba(45, 106, 79, 0.35);
+      border-radius: 100px;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .about-cv-download:hover {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
     .skills-chips {
       display: flex;
       flex-wrap: wrap;
@@ -573,12 +634,108 @@
 
     .artifact-preview {
       background: var(--cream);
-      padding: 1.5rem;
-      min-height: 140px;
+      padding: 1.25rem 1.5rem;
+      min-height: 200px;
       display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
+      align-items: center;
+      justify-content: center;
       border-bottom: 1px solid var(--border);
+    }
+
+    .artifact-thumb-btn {
+      border: none;
+      background: transparent;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      display: block;
+      cursor: zoom-in;
+      font: inherit;
+      border-radius: 0;
+    }
+
+    .artifact-thumb-btn:focus-visible {
+      outline: 2px solid var(--accent-mid);
+      outline-offset: 4px;
+    }
+
+    .artifact-preview img {
+      display: block;
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+      object-position: center center;
+      pointer-events: none;
+    }
+
+    .artifact-lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 10050;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(1rem, 4vw, 2.5rem);
+      background: rgba(26, 24, 20, 0.88);
+      backdrop-filter: blur(6px);
+    }
+
+    .artifact-lightbox.is-open {
+      display: flex;
+    }
+
+    .artifact-lightbox-inner {
+      position: relative;
+      max-width: min(96vw, 1100px);
+      max-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .artifact-lightbox-inner img {
+      display: block;
+      max-width: 100%;
+      max-height: 90vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+    }
+
+    .artifact-lightbox-close {
+      position: absolute;
+      top: -0.25rem;
+      right: -0.25rem;
+      transform: translate(0, -100%);
+      width: 2.5rem;
+      height: 2.5rem;
+      border: none;
+      border-radius: 50%;
+      background: var(--card-bg);
+      color: var(--ink);
+      font-size: 1.5rem;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .artifact-lightbox-close:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    @media (max-width: 600px) {
+      .artifact-lightbox-close {
+        top: 0.5rem;
+        right: 0.5rem;
+        transform: none;
+      }
     }
 
     .mock-row {
@@ -769,7 +926,10 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero" id="home">
-    <div class="hero-bg-text">QA</div>
+    <div class="hero-bg-text">
+      <span>Quality</span>
+      <span class="bg-accent">Assurance</span>
+    </div>
     <div class="hero-content">
       <div class="hero-eyebrow">Available for work</div>
       <h1 class="hero-name">
@@ -835,55 +995,32 @@
           <span class="chip">Exploratory Testing</span>
           <span class="chip">Test Planning</span>
         </div> -->
-      <div class="traits">
-        <div class="trait">
-          <span class="trait-icon">🔍</span>
-          <div>
-            <div class="trait-title">Manual Testing</div>
-            <!-- <div class="trait-desc">I don't skim — I dig. I test edge cases that most people overlook, from empty
-                fields to unexpected user behavior.</div> -->
+      <aside class="about-cv">
+        <div class="about-cv-heading">Education</div>
+        <div class="traits">
+          <div class="trait">
+            <span class="trait-icon">🎓</span>
+            <div>
+              <div class="trait-title">Information Technology · Diploma 3</div>
+              <div class="trait-desc">Madiun State Polytechnic · 2019-2022</div>
+            </div>
           </div>
         </div>
-        <div class="trait">
-          <span class="trait-icon">🧠</span>
-          <div>
-            <div class="trait-title">Test Case Writing</div>
-            <!-- <div class="trait-desc">I break down requirements, identify gaps, and think through "what could go wrong"
-                before a single line of code ships.</div> -->
+        <div class="about-cv-heading">Work experience</div>
+        <div class="traits">
+          <div class="trait">
+            <span class="trait-icon">💼</span>
+            <div>
+              <div class="trait-title">Graphic design · prior background</div>
+              <div class="trait-desc">Earlier work focused on layout, branded assets, and digital content—with the same eye for consistency and polish I apply in QA reviews. I keep it short here because this portfolio highlights testing; timelines and fuller detail are on my CV.</div>
+            </div>
           </div>
         </div>
-        <div class="trait">
-          <span class="trait-icon">📋</span>
-          <div>
-            <div class="trait-title">Bug Reporting</div>
-            <!-- <div class="trait-desc">My bug reports are reproducible, well-documented, and easy to understand — even
-                for non-technical stakeholders.</div> -->
-          </div>
+        <div class="about-cv-doc">
+          <div class="about-cv-doc-label">CV</div>
+          <a href="./cv.pdf" class="about-cv-download" target="_blank" rel="noopener noreferrer">Open PDF ↗</a>
         </div>
-        <div class="trait">
-          <span class="trait-icon">🔄</span>
-          <div>
-            <div class="trait-title">API Testing</div>
-            <!-- <div class="trait-desc">As a career switcher, I've proven I can pick up new domains quickly — and I bring
-                fresh perspective to every test cycle.</div> -->
-          </div>
-        </div>
-        <div class="trait">
-          <span class="trait-icon">🔄</span>
-          <div>
-            <div class="trait-title">Postman</div>
-            <!-- <div class="trait-desc">As a career switcher, I've proven I can pick up new domains quickly — and I bring
-                fresh perspective to every test cycle.</div> -->
-          </div>
-        </div>
-        <div class="trait">
-          <span class="trait-icon">🔄</span>
-          <div>
-            <div class="trait-title">Google Sheets, Trello</div>
-          </div>
-        </div>
-      </div>
-    </div>
+      </aside>
     </div>
   </section>
 
@@ -897,7 +1034,7 @@
     </div>
     <div class="skills-grid">
 
-      <div class="skill-card accent">
+      <div class="skill-card">
         <span class="skill-emoji">🧪</span>
         <div class="skill-name">Manual Testing</div>
         <div class="skill-desc">Functional, regression, exploratory, and smoke testing. My core strength and primary
@@ -1088,7 +1225,10 @@
 
       <div class="artifact-card">
         <div class="artifact-preview">
-          <img src="./TC.png"/>
+          <button type="button" class="artifact-thumb-btn" aria-label="Open larger preview of test case document">
+            <img src="./TC.png" alt=""
+              data-preview-alt="Positive and negative test case document sample"/>
+          </button>
         </div>
         <div class="artifact-info">
           <div class="artifact-type">Test Case</div>
@@ -1100,7 +1240,9 @@
 
       <div class="artifact-card">
         <div class="artifact-preview">
-          <img src="./bug.png"/>
+          <button type="button" class="artifact-thumb-btn" aria-label="Open larger preview of bug report">
+            <img src="./bug.png" alt="" data-preview-alt="Bug report UI validation sample"/>
+          </button>
         </div>
         <div class="artifact-info">
           <div class="artifact-type">Bug Report</div>
@@ -1112,7 +1254,9 @@
 
       <div class="artifact-card">
         <div class="artifact-preview">
-        <img src="./plan.png"/>
+          <button type="button" class="artifact-thumb-btn" aria-label="Open larger preview of test plan">
+            <img src="./plan.png" alt="" data-preview-alt="Web course online test plan sample"/>
+          </button>
         </div>
         <div class="artifact-info">
           <div class="artifact-type">Test Plan</div>
@@ -1142,11 +1286,65 @@
     </div>
   </div>
 
+  <div id="artifact-lightbox" class="artifact-lightbox" role="dialog" aria-modal="true" aria-label="Enlarged artifact preview" hidden>
+    <div class="artifact-lightbox-inner">
+      <button type="button" class="artifact-lightbox-close" aria-label="Close preview">&times;</button>
+      <img src="" alt=""/>
+    </div>
+  </div>
+
   <!-- ============ FOOTER ============ -->
   <footer>
     <p>© 2025 Dinar Nur Izzah · Quality Assurance Portfolio</p>
     <p>Built with intention. Tested with care.</p>
   </footer>
+
+  <script>
+    (function () {
+      var lb = document.getElementById('artifact-lightbox');
+      if (!lb) return;
+      var inner = lb.querySelector('.artifact-lightbox-inner');
+      var lbImg = inner.querySelector('img');
+      var closeBtn = lb.querySelector('.artifact-lightbox-close');
+      var lastFocus = null;
+
+      function open(src, alt) {
+        lastFocus = document.activeElement;
+        lbImg.src = src;
+        lbImg.alt = alt || '';
+        lb.hidden = false;
+        lb.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+      }
+
+      function close() {
+        lb.classList.remove('is-open');
+        lb.hidden = true;
+        lbImg.removeAttribute('src');
+        lbImg.alt = '';
+        document.body.style.overflow = '';
+        if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+        lastFocus = null;
+      }
+
+      document.querySelectorAll('.artifact-thumb-btn').forEach(function (btn) {
+        var thumb = btn.querySelector('img');
+        if (!thumb) return;
+        btn.addEventListener('click', function () {
+          open(thumb.currentSrc || thumb.src, thumb.getAttribute('data-preview-alt') || '');
+        });
+      });
+
+      closeBtn.addEventListener('click', close);
+      lb.addEventListener('click', function (e) {
+        if (e.target === lb) close();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && lb.classList.contains('is-open')) close();
+      });
+    })();
+  </script>
 
 </body>
 
