@@ -736,6 +736,14 @@
         right: 0.5rem;
         transform: none;
       }
+
+      .cert-item {
+        flex-wrap: wrap;
+      }
+
+      .cert-actions {
+        gap: 0.5rem 1rem;
+      }
     }
 
     .mock-row {
@@ -791,6 +799,104 @@
       font-size: 0.8rem;
       color: var(--ink-muted);
       line-height: 1.55;
+    }
+
+    /* CERTIFICATIONS */
+    .cert-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 720px;
+    }
+
+    .cert-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      transition: box-shadow 0.25s, border-color 0.25s;
+    }
+
+    .cert-item:hover {
+      border-color: var(--accent-mid);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    }
+
+    .cert-thumb-btn {
+      flex-shrink: 0;
+      width: 72px;
+      height: 72px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      padding: 0;
+      background: var(--cream);
+      cursor: zoom-in;
+    }
+
+    .cert-thumb-btn:focus-visible {
+      outline: 2px solid var(--accent-mid);
+      outline-offset: 2px;
+    }
+
+    .cert-thumb-btn img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    .cert-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .cert-title {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+    }
+
+    .cert-issuer {
+      font-size: 0.875rem;
+      color: var(--ink-muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .cert-meta {
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+      line-height: 1.5;
+    }
+
+    .cert-meta + .cert-meta {
+      margin-top: 0.15rem;
+    }
+
+    .cert-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      margin-top: 0.75rem;
+    }
+
+    .cert-action-link {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .cert-action-link:hover {
+      color: var(--tag-text);
+      text-decoration: underline;
     }
 
     /* CONTACT */
@@ -920,6 +1026,7 @@
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#artifacts">Artifacts</a></li>
+      <li><a href="#certifications">Certifications</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -1267,6 +1374,33 @@
       </div>
 
     </div>
+  </section>
+
+  <!-- ============ CERTIFICATIONS ============ -->
+  <section id="certifications">
+    <div class="section-header">
+      <div class="section-label">Certifications</div>
+      <h2 class="section-title">Licenses &<br>Certifications</h2>
+      <div class="divider"></div>
+      <p class="section-sub">Professional credentials and bootcamp completion</p>
+    </div>
+
+    <ul class="cert-list">
+      <li class="cert-item">
+        <button type="button" class="cert-thumb-btn artifact-thumb-btn" aria-label="Preview Sanbercode Quality Assurance certificate">
+          <img src="./ss-sanbercode.jpeg" alt="" data-preview-alt="Sanbercode Quality Assurance certificate"/>
+        </button>
+        <div class="cert-body">
+          <div class="cert-title">Quality Assurance</div>
+          <div class="cert-issuer">sanbercode</div>
+          <p class="cert-meta">Issued May 2026</p>
+          <p class="cert-meta">Credential ID 49325/871/SNBR/BOOTCAMP/V/2026</p>
+          <div class="cert-actions">
+            <a href="https://sanbercode.com/certificate/in/2aa77770-3aa6-4c10-bc45-50d6971f0b47" class="cert-action-link" target="_blank" rel="noopener noreferrer">Show credential ↗</a>
+          </div>
+        </div>
+      </li>
+    </ul>
   </section>
 
   <!-- ============ CONTACT ============ -->
